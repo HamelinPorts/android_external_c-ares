@@ -1092,7 +1092,7 @@ CARES_EXTERN ares_status_t ares_dns_parse(const unsigned char *buf,
  *
  *  \param[in]  dnsrec   Pointer to initialized and filled DNS record object.
  *  \param[out] buf      Pointer passed by reference to be filled in with with
- *                       DNS message.  Must be ares_free()'d by caller.
+ *                       DNS message.  Must be ares_free_string()'d by caller.
  *  \param[out] buf_len  Length of returned buffer containing DNS message.
  *  \return ARES_SUCCESS on success
  */
