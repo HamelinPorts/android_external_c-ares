@@ -61,4 +61,8 @@ cc_library_static {
         "-Wno-missing-field-initializers",
         "-Wno-pointer-arith",
     ],
+
+    // ares.h unconditionally pulls <jni.h> on Android.
+    header_libs: ["jni_headers"],
+    export_header_lib_headers: ["jni_headers"],
 }

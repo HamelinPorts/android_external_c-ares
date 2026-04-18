@@ -39,8 +39,9 @@
 #define HAVE_GETNAMEINFO             1
 #define HAVE_GETRANDOM               1
 #define HAVE_GETIFADDRS              1
-#define HAVE_GETSERVBYPORT_R         1
-#define HAVE_GETSERVBYNAME_R         1
+/* Bionic lacks getservby*_r — use non-reentrant path. */
+/* #undef HAVE_GETSERVBYPORT_R */
+/* #undef HAVE_GETSERVBYNAME_R */
 #define HAVE_GETTIMEOFDAY            1
 #define HAVE_IF_INDEXTONAME          1
 #define HAVE_IF_NAMETOINDEX          1
