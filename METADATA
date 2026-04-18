@@ -1,0 +1,19 @@
+name: "c-ares"
+description:
+    "c-ares is a C library for asynchronous DNS requests (including name "
+    "resolves). It is used by the reSIProcate SIP stack (external/resiprocate) "
+    "which in turn backs HamelinPortsImsService (packages/apps/HamelinPortsImsService)."
+
+third_party {
+  url {
+    type: HOMEPAGE
+    value: "https://c-ares.org/"
+  }
+  url {
+    type: GIT
+    value: "https://github.com/c-ares/c-ares"
+  }
+  version: "v1.34.6"
+  license_type: NOTICE
+  last_upgrade_date { year: 2025 month: 12 day: 8 }
+}

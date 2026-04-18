@@ -1,0 +1,64 @@
+// Copyright (C) The c-ares project and its contributors
+// SPDX-License-Identifier: MIT
+//
+// Android/Soong build for c-ares, pinned at upstream tag v1.34.6.
+// Consumed by external/resiprocate (libresip_rutil links libcares).
+
+package {
+    default_applicable_licenses: ["external_c-ares_license"],
+}
+
+license {
+    name: "external_c-ares_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-MIT"],
+    license_text: ["LICENSE.md"],
+}
+
+cc_library_static {
+    name: "libcares",
+    vendor_available: true,
+    host_supported: false,
+
+    srcs: [
+        "src/lib/*.c",
+        "src/lib/dsa/*.c",
+        "src/lib/event/*.c",
+        "src/lib/legacy/*.c",
+        "src/lib/record/*.c",
+        "src/lib/str/*.c",
+        "src/lib/util/*.c",
+    ],
+
+    exclude_srcs: [
+        "src/lib/windows_port.c",
+        "src/lib/ares_sysconfig_win.c",
+        "src/lib/ares_sysconfig_mac.c",
+        "src/lib/event/ares_event_win32.c",
+        "src/lib/event/ares_event_kqueue.c",
+    ],
+
+    local_include_dirs: [
+        "android",
+        "include",
+        "src/lib",
+        "src/lib/include",
+    ],
+
+    export_include_dirs: [
+        "include",
+        "android",
+    ],
+
+    cflags: [
+        "-DHAVE_CONFIG_H",
+        "-DCARES_STATICLIB",
+        "-DCARES_BUILDING_LIBRARY",
+        "-Wno-unused-parameter",
+        "-Wno-unused-function",
+        "-Wno-sign-compare",
+        "-Wno-implicit-function-declaration",
+        "-Wno-missing-field-initializers",
+        "-Wno-pointer-arith",
+    ],
+}
